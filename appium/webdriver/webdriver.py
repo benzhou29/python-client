@@ -760,14 +760,9 @@ class WebDriver(webdriver.Remote):
         self.execute(Command.SET_LOCATION, data)
         return self
 
-    def get_page_source(self):
-        """Returns the current page source.
-        """
-        return self.execute(Command.SOURCE, {})['value']
-
     @property
     def device_time(self):
-        """Returns the date and time from the device
+        """Returns the date and time fomr the device
         """
         return self.execute(Command.GET_DEVICE_TIME, {})['value']
 
@@ -859,6 +854,3 @@ class WebDriver(webdriver.Remote):
             ('GET', '/session/$sessionId/appium/device/system_time')
         self.command_executor._commands[Command.CLEAR] = \
             ('POST', '/session/$sessionId/element/$id/clear')
-        self.command_executor._commands[Command.SOURCE] = \
-            ('GET', '/session/$sessionId/source')
-
